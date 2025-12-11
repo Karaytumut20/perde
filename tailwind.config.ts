@@ -9,25 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "#1A1A1A",
-          soft: "#333333",
+        autex: {
+          black: "#111111",      // Orijinal Siyah
+          offwhite: "#F4F4F4",   // Orijinal Kırık Beyaz
+          gray: "#878787",       // Orijinal Gri
+          sage: "#8FA395",       // Sage Green (Vurgu)
+          terra: "#C27C68",      // Terracotta
         },
-        accent: {
-          terra: "#C27C68",
-          sage: "#8FA395",
-          stone: "#E5E5E5",
-        },
-        surface: {
-          DEFAULT: "#F9F9F9",
-          dark: "#121212",
-        }
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
+        sans: ["var(--font-manrope)", "sans-serif"],
       },
+      letterSpacing: {
+        tighter: "-0.04em", // Autex tarzı sıkı harfler
+      },
+      borderRadius: {
+        lg: "0px", // Köşeleri keskinleştiriyoruz (Autex stili)
+        xl: "0px",
+        "2xl": "0px",
+      }
     },
   },
   plugins: [],
