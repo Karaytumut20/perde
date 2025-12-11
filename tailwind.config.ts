@@ -10,23 +10,25 @@ const config: Config = {
     extend: {
       colors: {
         autex: {
-          black: "#111111",      // Orijinal Siyah
-          offwhite: "#F4F4F4",   // Orijinal Kırık Beyaz
-          gray: "#878787",       // Orijinal Gri
-          sage: "#8FA395",       // Sage Green (Vurgu)
-          terra: "#C27C68",      // Terracotta
+          black: "#111111",      // Tam siyah değil, 'Off-Black'
+          offwhite: "#F2F2F2",   // Biraz daha koyu bir kırık beyaz
+          gray: "#999999",       // Ara ton
+          sage: "#8A9A90",       // Daha soluk, doğal yeşil
+          terra: "#C87A65",      // Terracotta
         },
       },
       fontFamily: {
-        sans: ["var(--font-manrope)", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"], // Fontu Inter yaptık
       },
       letterSpacing: {
-        tighter: "-0.04em", // Autex tarzı sıkı harfler
+        tighter: "-0.04em", // Harfleri birbirine daha çok yaklaştır
+        tight: "-0.02em",
       },
       borderRadius: {
-        lg: "0px", // Köşeleri keskinleştiriyoruz (Autex stili)
+        lg: "0px", // Tüm yuvarlaklıkları iptal et (Keskin hatlar)
         xl: "0px",
         "2xl": "0px",
+        "3xl": "0px",
       }
     },
   },

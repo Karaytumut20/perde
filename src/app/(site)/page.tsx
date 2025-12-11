@@ -6,59 +6,70 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-autex-offwhite selection:bg-autex-sage selection:text-white">
+    <div className="min-h-screen bg-autex-offwhite">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative h-screen w-full overflow-hidden flex flex-col justify-end pb-12">
+      <section className="relative h-screen w-full overflow-hidden bg-gray-900">
         
-        {/* Video Background */}
+        {/* Video Arka Plan */}
         <div className="absolute inset-0 z-0">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover opacity-80 scale-105"
+            // Video yüklenmezse diye poster ekliyoruz (Autex style bir görsel)
+            poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
           >
+            {/* Daha yavaş, sakin ve kaliteli bir mimari video */}
             <source src="https://videos.pexels.com/video-files/3205626/3205626-uhd_2560_1440_25fps.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/20" />
+          {/* Gradyan Karartma: Yazıların okunması için şart */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
         </div>
 
-        {/* Ana İçerik */}
-        <div className="container mx-auto px-6 relative z-20 text-white w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-9">
+        {/* İçerik */}
+        <div className="container mx-auto px-6 md:px-12 relative z-20 h-full flex flex-col justify-end pb-16 md:pb-24">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+            
+            {/* Sol: Ana Başlık - Clamp ile orantılı hale getirildi */}
+            <div className="flex-1">
               <FadeIn>
-                <h1 className="text-[12vw] leading-[0.8] font-bold tracking-tighter uppercase mb-6">
+                <h1 className="text-white font-black tracking-tighter leading-[0.85] uppercase mb-6" style={{ fontSize: 'clamp(4rem, 11vw, 10rem)' }}>
                   Redefining <br />
-                  <span className="text-autex-sage">Silence.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-autex-sage to-white">Silence.</span>
                 </h1>
               </FadeIn>
             </div>
-            <div className="lg:col-span-3 pb-4">
+
+            {/* Sağ: Açıklama ve Butonlar */}
+            <div className="lg:w-1/3 text-white pb-2">
               <FadeIn delay={0.2}>
-                <p className="text-lg font-medium leading-snug mb-8 opacity-90 border-l border-white/30 pl-4">
-                  Beautiful acoustics for spaces where people live, work, and learn.
+                <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 border-l-2 border-autex-sage pl-6 opacity-90 max-w-md">
+                  Innovative acoustic solutions for the spaces where we live, work, and learn.
                 </p>
-                <div className="flex gap-4">
-                    <button className="h-14 w-14 bg-white rounded-full flex items-center justify-center text-black hover:scale-110 transition-transform">
-                        <Play fill="currentColor" size={20} className="ml-1"/>
-                    </button>
-                    <button className="px-8 py-4 bg-transparent border border-white/30 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                <div className="flex items-center gap-0">
+                    <button className="h-14 px-10 bg-white text-autex-black text-xs font-bold uppercase tracking-widest hover:bg-autex-sage hover:text-white transition-colors flex items-center gap-3">
                         Explore Range
+                        <ArrowRight size={16} />
+                    </button>
+                    <button className="h-14 w-14 border-y border-r border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors bg-white/5 backdrop-blur-sm">
+                        <Play size={18} fill="currentColor" />
                     </button>
                 </div>
               </FadeIn>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* --- MARQUEE --- */}
-      <div className="bg-autex-black py-4 overflow-hidden whitespace-nowrap border-b border-white/10">
-        <div className="animate-marquee inline-block text-white/20 text-9xl font-bold uppercase tracking-tighter">
-          Carbon Neutral • Sustainable Design • Acoustic Performance • 
+      {/* --- MARQUEE (Kayan Yazı) - Daha ince ve zarif --- */}
+      <div className="bg-autex-black py-5 border-b border-white/10 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap flex gap-16 text-autex-gray/40 text-4xl md:text-6xl font-black uppercase tracking-tighter select-none">
+          <span>Carbon Neutral</span> • <span>Sustainable Design</span> • <span>Acoustic Performance</span> • <span>Made in NZ</span> •
+          <span>Carbon Neutral</span> • <span>Sustainable Design</span> • <span>Acoustic Performance</span> • <span>Made in NZ</span> •
         </div>
       </div>
 
@@ -66,36 +77,40 @@ export default function HomePage() {
       <ProductGrid />
 
       {/* --- SUSTAINABILITY SECTION --- */}
-      <section className="py-32 bg-autex-black text-white relative overflow-hidden">
-         <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-               <div>
+      <section className="py-32 bg-autex-black text-white relative border-t border-white/10">
+         <div className="container mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+               <div className="space-y-10 sticky top-32">
                   <FadeIn>
-                    <span className="text-autex-sage tracking-widest uppercase text-xs font-bold mb-6 block">Our Commitment</span>
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9]">
+                    <span className="text-autex-sage tracking-widest uppercase text-xs font-bold mb-6 block">Our Responsibility</span>
+                    <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8">
                        Planet <br />
                        <span className="text-autex-gray">First.</span>
                     </h2>
-                    <p className="text-gray-400 text-xl leading-relaxed mb-12 font-light">
-                       Every product we make is carbon neutral. We don’t just offset; we reduce, recycle, and rethink everything.
+                    <p className="text-gray-400 text-xl leading-relaxed font-light border-l border-white/10 pl-6 max-w-lg">
+                       We are a carbon neutral organization. We don't just offset; we reduce, recycle, and rethink everything we do.
                     </p>
-                    <Link href="/sustainability" className="inline-flex items-center gap-2 text-white border-b border-white pb-1 hover:text-autex-sage hover:border-autex-sage transition-all text-sm font-bold uppercase tracking-widest">
-                       Read Impact Report <ArrowRight size={16} />
+                  </FadeIn>
+                  <FadeIn delay={0.2}>
+                    <Link href="/sustainability" className="inline-flex items-center gap-3 text-white text-sm font-bold uppercase tracking-widest hover:text-autex-sage transition-colors group">
+                       View Impact Report 
+                       <span className="w-8 h-[1px] bg-white group-hover:w-12 transition-all group-hover:bg-autex-sage"></span>
                     </Link>
                   </FadeIn>
                </div>
                
-               <div className="grid grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
                   {[
-                    { icon: Recycle, val: "60%", label: "Recycled Content", color: "text-autex-sage" },
-                    { icon: Leaf, val: "Zero", label: "Carbon Footprint", color: "text-autex-terra" },
-                    { icon: Wind, val: "Low", label: "VOC Emissions", color: "text-blue-300" }
+                    { icon: Recycle, val: "60%", label: "Recycled Content", color: "text-white" },
+                    { icon: Leaf, val: "0%", label: "Carbon Footprint", color: "text-autex-sage" },
+                    { icon: Wind, val: "Low", label: "VOC Emissions", color: "text-white" },
+                    { icon: ArrowRight, val: "20+", label: "Global Locations", color: "text-autex-terra" }
                   ].map((stat, i) => (
-                    <FadeIn key={i} delay={0.2 + (i * 0.1)} className={`bg-white/5 p-8 aspect-square flex flex-col justify-between group hover:bg-white/10 transition-colors ${i === 1 ? 'mt-12' : i === 2 ? '-mt-12' : ''}`}>
+                    <FadeIn key={i} delay={0.2 + (i * 0.1)} className="bg-autex-black p-10 flex flex-col justify-between aspect-square group hover:bg-white/5 transition-colors">
                         <stat.icon size={32} className={stat.color} />
                         <div>
-                            <span className="block text-4xl font-bold mb-2">{stat.val}</span>
-                            <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">{stat.label}</span>
+                            <span className="block text-4xl md:text-5xl font-bold mb-2 tracking-tighter">{stat.val}</span>
+                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">{stat.label}</span>
                         </div>
                     </FadeIn>
                   ))}
